@@ -6,13 +6,13 @@ function collectMetrics() {
     };
   
     // Send metrics to your backend or a metrics endpoint
-    fetch('http://localhost:3000/metrics', { // Make sure the protocol matches your server's
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(metrics)
-    }).catch(err => console.error('Failed to send metrics:', err));
+    fetch('http://localhost:3000/metrics', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(metrics)
+      }).catch(err => console.error('Failed to send metrics:', err));
   }
   
   // Collect metrics after the page has fully loaded
