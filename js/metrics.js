@@ -6,7 +6,7 @@ function collectMetrics() {
     };
   
     // Send metrics to your backend or a metrics endpoint
-    fetch('http://localhost:3000/metrics', {
+    fetch('http://3.109.124.167:3000/metrics', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
