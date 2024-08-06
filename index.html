@@ -28,6 +28,7 @@
 
     <!--Google Webfonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="js/metrics.js" defer></script>
 </head>
 <body>
 
@@ -562,33 +563,9 @@
 <script src="js/jquery.waypoints.min.js"></script>
 <script src="js/images-loaded.min.js"></script>
 <script src="js/lightbox.min.js"></script>
-<!-- <script src="https://unpkg.com/perfume.js"></script> -->
-<script src="https://unpkg.com/perfume.js@9.4.0/dist/perfume.umd.min.js"></script>
+
 
 <script src="js/site.js"></script>
-
-
-
-<script>
-  const perfume = new Perfume({
-    firstPaint: true,
-    firstContentfulPaint: true,
-    firstInputDelay: true,
-  });
-
-  perfume.on('firstContentfulPaint', (duration) => {
-    fetch('/metrics', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        metric: 'firstContentfulPaint',
-        value: duration,
-      }),
-    });
-  });
-</script>
 
 
 
