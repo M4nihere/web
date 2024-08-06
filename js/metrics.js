@@ -15,9 +15,8 @@ function collectMetrics() {
     },
     body: JSON.stringify(metrics)
   }).catch(err => console.error('Failed to send metrics:', err));
-}
 
-fetch('http://3.109.124.167:3001/metrics', { // Use the correct server IP and port
+  fetch('http://3.109.124.167:3001/metrics', { // Use the correct server IP and port
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -25,6 +24,7 @@ fetch('http://3.109.124.167:3001/metrics', { // Use the correct server IP and po
     body: JSON.stringify(metrics)
   }).catch(err => console.error('Failed to send metrics:', err));
 }
+
 
 // Collect metrics after the page has fully loaded
 window.addEventListener('load', collectMetrics);
