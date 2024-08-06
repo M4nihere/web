@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfume.js Example</title>
-    <script src="https://unpkg.com/perfume.js"></script>
+    <script src="https://unpkg.com/@zizzamia/perfume"></script>
 </head>
 <body>
     <h1>My Website</h1>
     <script>
-        // Initialize Perfume.js
-        const perfume = new Perfume({
-            analyticsTracker: (options) => {
-                // Send data to your metrics endpoint
-                const { metricName, data } = options;
-                fetch('/metrics', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ metricName, data })
-                });
-            }
-        });
+        // Ensure Perfume.js is loaded correctly
+        if (typeof Perfume !== 'undefined') {
+            const perfume = new Perfume({
+                analyticsTracker: (options) => {
+                    const { metricName, data } = options;
+                    fetch('/metrics', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ metricName, data })
+                    });
+                }
+            });
 
-        // Measure a custom metric
-        perfume.start('customMetric');
-        // Simulate some work
-        setTimeout(() => {
-            perfume.end('customMetric');
-        }, 1000);
+            // Measure a custom metric
+            perfume.start('customMetric');
+            // Simulate some work
+            setTimeout(() => {
+                perfume.end('customMetric');
+            }, 1000);
+        } else {
+            console.error('Perfume.js not loaded');
+        }
     </script>
 </body>
 </html>
