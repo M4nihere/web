@@ -8,7 +8,7 @@ function collectMetrics() {
 
   console.log('Collecting metrics:', metrics); // Debugging line to check metrics
 
-  fetch('http://13.127.47.99/:3000/metrics', { // Use the correct server IP and port
+  fetch('http://13.127.47.99:3000/metrics', { // Use the correct server IP and port
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
